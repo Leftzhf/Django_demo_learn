@@ -1,4 +1,4 @@
-from django.contrib.auth.models import User
+
 from django.http import JsonResponse
 from django.shortcuts import render
 
@@ -18,5 +18,6 @@ class UsernameCountView(View):
         Returns:
         没有重复返回0，有重复返回1.
         """
+        from apps.users.models import User
         count=User.objects.filter(username=username).count()
         return JsonResponse({'code':0,'count':count,'errmsg':'ok'})
